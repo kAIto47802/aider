@@ -40,6 +40,9 @@ def send_completion(
     if extra_params is not None:
         kwargs.update(extra_params)
 
+    if "deepseek-prover" in model_name:
+        kwargs["api_base"] = "http://localhost:8000/v1"
+
     key = json.dumps(kwargs, sort_keys=True).encode()
 
     # Generate SHA1 hash of kwargs and append it to chat_completion_call_hashes
@@ -48,7 +51,13 @@ def send_completion(
     if not stream and CACHE is not None and key in CACHE:
         return hash_object, CACHE[key]
 
+    print('[[kwargs]]')
+    print(kwargs)
+    print('-------------------')
     res = litellm.completion(**kwargs)
+    print('[[[res]]]')
+    print(res)
+    print('----------------------')
 
     if not stream and CACHE is not None:
         CACHE[key] = res
