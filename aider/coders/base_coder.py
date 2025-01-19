@@ -793,7 +793,7 @@ class Coder:
             self.commit_before_message.append(self.repo.get_head_commit_sha())
 
     def run(self, with_message=None, preproc=True):
-        print("[[[[[[run]]]]]]")
+        # print("[[[[[[run]]]]]]") #!!!!!
         try:
             if with_message:
                 self.io.user_input(with_message)
@@ -846,9 +846,9 @@ class Coder:
 
         if preproc:
             message = self.preproc_user_input(user_message)
-            print("[[message]]")
-            print(message)
-            print('---------------------')
+            # print("[[message]]") #!!!!!
+            # print(message)
+            # print('---------------------')
         else:
             message = user_message
 

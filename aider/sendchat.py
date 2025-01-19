@@ -51,13 +51,13 @@ def send_completion(
     if not stream and CACHE is not None and key in CACHE:
         return hash_object, CACHE[key]
 
-    print('[[kwargs]]')
-    print(kwargs)
-    print('-------------------')
+    # print('[[kwargs]]') #!!!!!
+    # print(kwargs)
+    # print('-------------------')
     res = litellm.completion(**kwargs)
-    print('[[[res]]]')
-    print(res)
-    print('----------------------')
+    # print('[[[res]]]') #!!!!!
+    # print(res)
+    # print('----------------------')
 
     if not stream and CACHE is not None:
         CACHE[key] = res
